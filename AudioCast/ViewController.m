@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import <CocoaSSDP/SSDPService.h>
 #import <CocoaSSDP/SSDPServiceTypes.h>
+#import "STHTTPRequest.h"
+#import "ACSSDPService.h"
+#import "XMLDictionary.h"
 
 @implementation ViewController
 
@@ -51,14 +54,42 @@ NSMutableArray *_services;
     
     NSTableCellView *cellView = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
     
-    SSDPService *service = _services[row];
+    ACSSDPService *service = _services[row];
     
     if (tableColumn == tableView.tableColumns.firstObject) {
-        cellView.textField.stringValue = service.serviceType;
+        cellView.textField.stringValue = service.friendlyName;
     } else if (tableColumn == tableView.tableColumns.lastObject) {
-        cellView.textField.stringValue = service.location.absoluteString;
+        cellView.textField.stringValue = service.service.location.absoluteString;
     }
     return cellView;
+}
+
+#pragma mark - Internal methods
+
+- (void) loadDeviceXml:(SSDPService*)baseService {
+    
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:baseService.location.absoluteString];
+    
+    r.completionBlock = ^(NSDictionary *headers, NSString *body) {
+        
+        NSDictionary * xmlDoc = [[XMLDictionaryParser alloc] dictionaryWithString:body];
+        
+        ACSSDPService * service = [[ACSSDPService alloc] init];
+        
+        service.service = baseService;
+        service.friendlyName = [[xmlDoc valueForKeyPath:@"device.friendlyName"] innerText];
+        
+        [_services insertObject:service atIndex:0];
+        
+        [self.table reloadData];
+    };
+    
+    r.errorBlock = ^(NSError *error) {
+        // TBD
+    };
+    
+    [r startAsynchronous];
+    
 }
 
 #pragma mark - SSDP browser delegate methods
@@ -71,9 +102,8 @@ NSMutableArray *_services;
     NSLog(@"SSDP Browser found: %@", service);
 
     if ([service.serviceType  isEqual: @"urn:schemas-upnp-org:device:MediaRenderer:1"]) {
-    
-        [_services insertObject:service atIndex:0];
-        [self.table reloadData];
+        
+        [self loadDeviceXml:service];
     }
 }
 

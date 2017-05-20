@@ -13,6 +13,9 @@
 		358100701ED0666200138271 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3581006F1ED0666200138271 /* Assets.xcassets */; };
 		358100731ED0666200138271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358100711ED0666200138271 /* Main.storyboard */; };
 		3581007B1ED0678500138271 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3581007A1ED0678500138271 /* Podfile */; };
+		35967FDE1ED0A12700ACDA84 /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 35967FDD1ED0A12700ACDA84 /* STHTTPRequest.m */; };
+		35967FE11ED0A2B300ACDA84 /* ACSSDPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 35967FE01ED0A2B300ACDA84 /* ACSSDPService.m */; };
+		35967FE41ED0A55700ACDA84 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 35967FE31ED0A55700ACDA84 /* XMLDictionary.m */; };
 		A9AD0B954803B98A531C2B4B /* Pods_AudioCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B5ADEEC70BC8A319FC886C /* Pods_AudioCast.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,12 @@
 		358100721ED0666200138271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		358100741ED0666200138271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3581007A1ED0678500138271 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		35967FDC1ED0A12700ACDA84 /* STHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHTTPRequest.h; sourceTree = "<group>"; };
+		35967FDD1ED0A12700ACDA84 /* STHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHTTPRequest.m; sourceTree = "<group>"; };
+		35967FDF1ED0A2B300ACDA84 /* ACSSDPService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSSDPService.h; sourceTree = "<group>"; };
+		35967FE01ED0A2B300ACDA84 /* ACSSDPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACSSDPService.m; sourceTree = "<group>"; };
+		35967FE21ED0A55700ACDA84 /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLDictionary.h; path = ../../../../XMLDictionary.h; sourceTree = "<group>"; };
+		35967FE31ED0A55700ACDA84 /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLDictionary.m; path = ../../../../XMLDictionary.m; sourceTree = "<group>"; };
 		4EFECC1E4EFE354608DCBF86 /* Pods-AudioCast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioCast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AudioCast/Pods-AudioCast.debug.xcconfig"; sourceTree = "<group>"; };
 		F2F75D00B61901BA4C703B8D /* Pods-AudioCast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioCast.release.xcconfig"; path = "Pods/Target Support Files/Pods-AudioCast/Pods-AudioCast.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +83,12 @@
 		358100651ED0666200138271 /* AudioCast */ = {
 			isa = PBXGroup;
 			children = (
+				35967FE21ED0A55700ACDA84 /* XMLDictionary.h */,
+				35967FE31ED0A55700ACDA84 /* XMLDictionary.m */,
+				35967FDF1ED0A2B300ACDA84 /* ACSSDPService.h */,
+				35967FE01ED0A2B300ACDA84 /* ACSSDPService.m */,
+				35967FDC1ED0A12700ACDA84 /* STHTTPRequest.h */,
+				35967FDD1ED0A12700ACDA84 /* STHTTPRequest.m */,
 				358100661ED0666200138271 /* AppDelegate.h */,
 				358100671ED0666200138271 /* AppDelegate.m */,
 				3581006C1ED0666200138271 /* ViewController.h */,
@@ -226,8 +241,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3581006E1ED0666200138271 /* ViewController.m in Sources */,
+				35967FE11ED0A2B300ACDA84 /* ACSSDPService.m in Sources */,
 				3581006B1ED0666200138271 /* main.m in Sources */,
+				35967FDE1ED0A12700ACDA84 /* STHTTPRequest.m in Sources */,
 				358100681ED0666200138271 /* AppDelegate.m in Sources */,
+				35967FE41ED0A55700ACDA84 /* XMLDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +397,7 @@
 				358100791ED0666200138271 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
