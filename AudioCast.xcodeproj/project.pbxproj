@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3526FEAE1ED0F2B400E6AC1F /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3526FEAD1ED0F2B400E6AC1F /* ViewController.mm */; };
 		358100681ED0666200138271 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 358100671ED0666200138271 /* AppDelegate.m */; };
 		3581006B1ED0666200138271 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3581006A1ED0666200138271 /* main.m */; };
-		3581006E1ED0666200138271 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3581006D1ED0666200138271 /* ViewController.m */; };
 		358100701ED0666200138271 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3581006F1ED0666200138271 /* Assets.xcassets */; };
 		358100731ED0666200138271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358100711ED0666200138271 /* Main.storyboard */; };
 		3581007B1ED0678500138271 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3581007A1ED0678500138271 /* Podfile */; };
@@ -23,12 +23,12 @@
 
 /* Begin PBXFileReference section */
 		11B5ADEEC70BC8A319FC886C /* Pods_AudioCast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioCast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3526FEAD1ED0F2B400E6AC1F /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		358100631ED0666200138271 /* AudioCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		358100661ED0666200138271 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		358100671ED0666200138271 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3581006A1ED0666200138271 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3581006C1ED0666200138271 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3581006D1ED0666200138271 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3581006F1ED0666200138271 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		358100721ED0666200138271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		358100741ED0666200138271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,6 +89,7 @@
 		358100651ED0666200138271 /* AudioCast */ = {
 			isa = PBXGroup;
 			children = (
+				3526FEAD1ED0F2B400E6AC1F /* ViewController.mm */,
 				35967FE21ED0A55700ACDA84 /* XMLDictionary.h */,
 				35967FE31ED0A55700ACDA84 /* XMLDictionary.m */,
 				35967FDF1ED0A2B300ACDA84 /* ACSSDPService.h */,
@@ -98,7 +99,6 @@
 				358100661ED0666200138271 /* AppDelegate.h */,
 				358100671ED0666200138271 /* AppDelegate.m */,
 				3581006C1ED0666200138271 /* ViewController.h */,
-				3581006D1ED0666200138271 /* ViewController.m */,
 				3581006F1ED0666200138271 /* Assets.xcassets */,
 				358100711ED0666200138271 /* Main.storyboard */,
 				358100741ED0666200138271 /* Info.plist */,
@@ -250,7 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3581006E1ED0666200138271 /* ViewController.m in Sources */,
 				35967FE11ED0A2B300ACDA84 /* ACSSDPService.m in Sources */,
 				3581006B1ED0666200138271 /* main.m in Sources */,
 				35967FDE1ED0A12700ACDA84 /* STHTTPRequest.m in Sources */,
@@ -258,6 +257,7 @@
 				358100681ED0666200138271 /* AppDelegate.m in Sources */,
 				35967FEA1ED0C2FA00ACDA84 /* DeviceUtils.m in Sources */,
 				35967FE41ED0A55700ACDA84 /* XMLDictionary.m in Sources */,
+				3526FEAE1ED0F2B400E6AC1F /* ViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
