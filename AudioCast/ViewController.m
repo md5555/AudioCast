@@ -70,7 +70,7 @@ NSMutableArray *_services;
     return cell;
 }
 
-#pragma mark - Internal methods
+#pragma mark - Delegate methods
 
 - (void) deviceLoaded:(ACSSDPService*)service {
     
