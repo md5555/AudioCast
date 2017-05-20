@@ -12,13 +12,16 @@
 #import "STHTTPRequest.h"
 #import "ACSSDPService.h"
 #import "XMLDictionary.h"
+#import "DeviceUtils.h"
+#import "DeviceLoader.h"
 
 @implementation ViewController
 
 SSDPServiceBrowser *_browser;
 NSMutableArray *_services;
 
-- (void)viewDidLoad {
+- (void) viewDidLoad {
+    
     [super viewDidLoad];
 
     // Do any additional setup after loading the view.
@@ -28,7 +31,7 @@ NSMutableArray *_services;
     
     _services = [[NSMutableArray alloc] init];
     
-    _browser = [[SSDPServiceBrowser alloc] initWithServiceType:SSDPServiceType_All];
+    _browser = [[SSDPServiceBrowser alloc] initWithServiceType:SSDPServiceType_UPnP_MediaRenderer1];
     _browser.delegate = self;
     
     [_browser startBrowsingForServices];
@@ -36,110 +39,43 @@ NSMutableArray *_services;
 
 #pragma mark - Table View
 
-- (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
-
-    // Update the view, if already loaded.
+- (int) numberOfRowsInTableView:(NSTableView *)pTableViewObj {
     
+    return (int) _services.count;
 }
 
-- (int)numberOfRowsInTableView:(NSTableView *)pTableViewObj {
-    
-    return (int)_services.count;
-}
-
-- (NSView *)tableView:(NSTableView *)tableView
+- (NSView *) tableView:(NSTableView *)tableView
    viewForTableColumn:(NSTableColumn *)tableColumn
                   row:(NSInteger)row {
     
-    NSTableCellView *cellView = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
+    NSTableCellView *cell = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
     
     ACSSDPService *service = _services[row];
     
-    if (tableColumn == tableView.tableColumns.firstObject) {
+    if (tableColumn == [tableView.tableColumns objectAtIndex:0]) {
 
-        cellView.textField.stringValue = service.friendlyName;
+        [cell.textField setStringValue:service.friendlyName];
 
         if (service.imageData != nil) {
-            
-            NSLog(@"IMG: setting image to cell");
-            
-            NSImage * image = [[NSImage alloc] initWithData:(NSData *)service.imageData];
-            [cellView.imageView setImage:image];
-            cellView.imageView.hidden = NO;
+            [cell.imageView setImage:[[NSImage alloc] initWithData:service.imageData]];
+            [cell.imageView setHidden:NO];
         }
         
-    } else if (tableColumn == tableView.tableColumns.lastObject) {
+    } else if (tableColumn == [tableView.tableColumns objectAtIndex:1]) {
         
-        cellView.textField.stringValue = service.service.location.absoluteString;
-        cellView.imageView.hidden = YES;
+        [cell.textField setStringValue:service.service.location.absoluteString];
+        [cell.imageView setHidden:YES];
     }
     
-    return cellView;
+    return cell;
 }
 
 #pragma mark - Internal methods
 
-- (void) loadDeviceXml:(SSDPService*)baseService {
+- (void) deviceLoaded:(ACSSDPService*)service {
     
-    STHTTPRequest *xmlRequest = [STHTTPRequest requestWithURLString:baseService.location.absoluteString];
-    xmlRequest.completionBlock = ^(NSDictionary *headers, NSString *body) {
-        
-        NSDictionary  * xmlDoc  = [[XMLDictionaryParser alloc] dictionaryWithString:body];
-        ACSSDPService * service = [[ACSSDPService alloc] init];
-        
-        service.service = baseService;
-        service.friendlyName = [[xmlDoc valueForKeyPath:@"device.friendlyName"] innerText];
-        
-        NSURL * url = [NSURL URLWithString:service.service.location.absoluteString];
-        
-        NSMutableString * imageUrlString = [NSMutableString string];
-        
-        NSArray * array = [xmlDoc valueForKeyPath:@"device.iconList.icon"];
-
-        NSString * iconUrl = [[[array objectAtIndex:0] valueForKey:@"url"] innerText];
-        
-        NSLog(@"IMG: iconUrl: %@", iconUrl);
-
-        if (iconUrl == nil) {
-            [service setImageData:nil];
-            [_services insertObject:service atIndex:0];
-            [self.table reloadData];
-            return;
-        }
-        
-        [imageUrlString appendString:@"http://"];
-        [imageUrlString appendString:url.host];
-        [imageUrlString appendFormat:@":%@", url.port];
-        [imageUrlString appendString:iconUrl];
-        
-        NSLog(@"IMG: FullURL: %@", imageUrlString);
-        
-        STHTTPRequest *imageRequest = [STHTTPRequest requestWithURLString:imageUrlString];
-        
-        imageRequest.completionDataBlock = ^(NSDictionary *headers, NSData * data) {
-          
-            [service setImageData:data];
-            
-            NSLog(@"IMG: ImageLoadSuccess: %@", imageUrlString);
-
-            [_services insertObject:service atIndex:0];
-            [self.table reloadData];
-        };
-        
-        imageRequest.errorBlock = ^(NSError *error) {
-            // TBD
-        };
-        
-        [imageRequest startAsynchronous];
-    };
-    
-    xmlRequest.errorBlock = ^(NSError *error) {
-        // TBD
-    };
-
-    [xmlRequest startAsynchronous];
-    
+    [_services insertObject:service atIndex:0];
+    [self.table reloadData];
 }
 
 #pragma mark - SSDP browser delegate methods
@@ -150,11 +86,10 @@ NSMutableArray *_services;
 
 - (void) ssdpBrowser:(SSDPServiceBrowser *)browser didFindService:(SSDPService *)service {
     NSLog(@"SSDP Browser found: %@", service);
-
-    if ([service.serviceType  isEqual: @"urn:schemas-upnp-org:device:MediaRenderer:1"]) {
-        
-        [self loadDeviceXml:service];
-    }
+    
+    DeviceLoader * loader = [[DeviceLoader alloc] initWithService:service];
+    [loader setDelegate:self];
+    [loader performLoad];
 }
 
 - (void) ssdpBrowser:(SSDPServiceBrowser *)browser didRemoveService:(SSDPService *)service {

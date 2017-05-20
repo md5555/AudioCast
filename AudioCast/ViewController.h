@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong) IBOutlet NSTableView *table;
 
-
 - (int)numberOfRowsInTableView:(NSTableView *)pTableViewObj;
 
 - (NSView *)tableView:(NSTableView *)tableView
@@ -22,4 +21,3 @@
                   row:(NSInteger)row;
 
 @end
-

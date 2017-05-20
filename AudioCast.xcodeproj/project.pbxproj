@@ -16,6 +16,8 @@
 		35967FDE1ED0A12700ACDA84 /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 35967FDD1ED0A12700ACDA84 /* STHTTPRequest.m */; };
 		35967FE11ED0A2B300ACDA84 /* ACSSDPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 35967FE01ED0A2B300ACDA84 /* ACSSDPService.m */; };
 		35967FE41ED0A55700ACDA84 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 35967FE31ED0A55700ACDA84 /* XMLDictionary.m */; };
+		35967FEA1ED0C2FA00ACDA84 /* DeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 35967FE91ED0C2FA00ACDA84 /* DeviceUtils.m */; };
+		35967FED1ED0C6B900ACDA84 /* DeviceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 35967FEC1ED0C6B900ACDA84 /* DeviceLoader.m */; };
 		A9AD0B954803B98A531C2B4B /* Pods_AudioCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B5ADEEC70BC8A319FC886C /* Pods_AudioCast.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,10 @@
 		35967FE01ED0A2B300ACDA84 /* ACSSDPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACSSDPService.m; sourceTree = "<group>"; };
 		35967FE21ED0A55700ACDA84 /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLDictionary.h; path = ../../../../XMLDictionary.h; sourceTree = "<group>"; };
 		35967FE31ED0A55700ACDA84 /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLDictionary.m; path = ../../../../XMLDictionary.m; sourceTree = "<group>"; };
+		35967FE81ED0C2FA00ACDA84 /* DeviceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUtils.h; sourceTree = "<group>"; };
+		35967FE91ED0C2FA00ACDA84 /* DeviceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUtils.m; sourceTree = "<group>"; };
+		35967FEB1ED0C6B900ACDA84 /* DeviceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceLoader.h; sourceTree = "<group>"; };
+		35967FEC1ED0C6B900ACDA84 /* DeviceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceLoader.m; sourceTree = "<group>"; };
 		4EFECC1E4EFE354608DCBF86 /* Pods-AudioCast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioCast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AudioCast/Pods-AudioCast.debug.xcconfig"; sourceTree = "<group>"; };
 		F2F75D00B61901BA4C703B8D /* Pods-AudioCast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioCast.release.xcconfig"; path = "Pods/Target Support Files/Pods-AudioCast/Pods-AudioCast.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +103,10 @@
 				358100711ED0666200138271 /* Main.storyboard */,
 				358100741ED0666200138271 /* Info.plist */,
 				358100691ED0666200138271 /* Supporting Files */,
+				35967FE81ED0C2FA00ACDA84 /* DeviceUtils.h */,
+				35967FE91ED0C2FA00ACDA84 /* DeviceUtils.m */,
+				35967FEB1ED0C6B900ACDA84 /* DeviceLoader.h */,
+				35967FEC1ED0C6B900ACDA84 /* DeviceLoader.m */,
 			);
 			path = AudioCast;
 			sourceTree = "<group>";
@@ -244,7 +254,9 @@
 				35967FE11ED0A2B300ACDA84 /* ACSSDPService.m in Sources */,
 				3581006B1ED0666200138271 /* main.m in Sources */,
 				35967FDE1ED0A12700ACDA84 /* STHTTPRequest.m in Sources */,
+				35967FED1ED0C6B900ACDA84 /* DeviceLoader.m in Sources */,
 				358100681ED0666200138271 /* AppDelegate.m in Sources */,
+				35967FEA1ED0C2FA00ACDA84 /* DeviceUtils.m in Sources */,
 				35967FE41ED0A55700ACDA84 /* XMLDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
