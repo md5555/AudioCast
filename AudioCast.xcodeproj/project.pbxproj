@@ -12,9 +12,12 @@
 		3581006E1ED0666200138271 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3581006D1ED0666200138271 /* ViewController.m */; };
 		358100701ED0666200138271 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3581006F1ED0666200138271 /* Assets.xcassets */; };
 		358100731ED0666200138271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 358100711ED0666200138271 /* Main.storyboard */; };
+		3581007B1ED0678500138271 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3581007A1ED0678500138271 /* Podfile */; };
+		A9AD0B954803B98A531C2B4B /* Pods_AudioCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B5ADEEC70BC8A319FC886C /* Pods_AudioCast.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11B5ADEEC70BC8A319FC886C /* Pods_AudioCast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioCast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		358100631ED0666200138271 /* AudioCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		358100661ED0666200138271 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		358100671ED0666200138271 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -24,6 +27,9 @@
 		3581006F1ED0666200138271 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		358100721ED0666200138271 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		358100741ED0666200138271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3581007A1ED0678500138271 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		4EFECC1E4EFE354608DCBF86 /* Pods-AudioCast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioCast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AudioCast/Pods-AudioCast.debug.xcconfig"; sourceTree = "<group>"; };
+		F2F75D00B61901BA4C703B8D /* Pods-AudioCast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioCast.release.xcconfig"; path = "Pods/Target Support Files/Pods-AudioCast/Pods-AudioCast.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9AD0B954803B98A531C2B4B /* Pods_AudioCast.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22E69BC19C69C2DFBF770249 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11B5ADEEC70BC8A319FC886C /* Pods_AudioCast.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3581005A1ED0666200138271 = {
 			isa = PBXGroup;
 			children = (
+				3581007A1ED0678500138271 /* Podfile */,
 				358100651ED0666200138271 /* AudioCast */,
 				358100641ED0666200138271 /* Products */,
+				F2050D5E2D9947194BD20599 /* Pods */,
+				22E69BC19C69C2DFBF770249 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +94,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F2050D5E2D9947194BD20599 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4EFECC1E4EFE354608DCBF86 /* Pods-AudioCast.debug.xcconfig */,
+				F2F75D00B61901BA4C703B8D /* Pods-AudioCast.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 358100771ED0666200138271 /* Build configuration list for PBXNativeTarget "AudioCast" */;
 			buildPhases = (
+				0EF025E585859D6C59567B43 /* [CP] Check Pods Manifest.lock */,
 				3581005F1ED0666200138271 /* Sources */,
 				358100601ED0666200138271 /* Frameworks */,
 				358100611ED0666200138271 /* Resources */,
+				0847CCFBA86E909920CEC531 /* [CP] Embed Pods Frameworks */,
+				8CE7A36024EB3A9B7555E6D1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,12 +164,61 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3581007B1ED0678500138271 /* Podfile in Resources */,
 				358100701ED0666200138271 /* Assets.xcassets in Resources */,
 				358100731ED0666200138271 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0847CCFBA86E909920CEC531 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AudioCast/Pods-AudioCast-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0EF025E585859D6C59567B43 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8CE7A36024EB3A9B7555E6D1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AudioCast/Pods-AudioCast-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3581005F1ED0666200138271 /* Sources */ = {
@@ -257,6 +336,7 @@
 		};
 		358100781ED0666200138271 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EFECC1E4EFE354608DCBF86 /* Pods-AudioCast.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -269,6 +349,7 @@
 		};
 		358100791ED0666200138271 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2F75D00B61901BA4C703B8D /* Pods-AudioCast.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;

@@ -7,9 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <CocoaSSDP/SSDPService.h>
+#import <CocoaSSDP/SSDPServiceBrowser.h>
 
-@interface ViewController : NSViewController
+@interface ViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, SSDPServiceBrowserDelegate>
 
+@property (nonatomic, strong) IBOutlet NSTableView *table;
+
+
+- (int)numberOfRowsInTableView:(NSTableView *)pTableViewObj;
+
+- (NSView *)tableView:(NSTableView *)tableView
+   viewForTableColumn:(NSTableColumn *)tableColumn
+                  row:(NSInteger)row;
 
 @end
 
