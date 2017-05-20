@@ -34,6 +34,12 @@ NSMutableArray *_services;
     [_browser startBrowsingForServices];
 }
 
+- (void)dealloc
+{
+    [_browser stopBrowsingForServices];
+    [_services removeAllObjects];
+}
+
 #pragma mark - Table View
 
 - (int) numberOfRowsInTableView:(NSTableView *)pTableViewObj {

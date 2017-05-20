@@ -21,9 +21,18 @@
 
 }
 
-
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+}
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+    return NO;
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag {
+    
+    [sender.mainWindow makeKeyAndOrderFront:self];
+    return NO;
 }
 
 @end

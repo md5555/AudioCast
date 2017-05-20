@@ -62,7 +62,7 @@
                                     <items>
                                         <menuItem title="Show Device Browser" keyEquivalent="b" id="KQz-CZ-udm">
                                             <connections>
-                                                <segue destination="B8D-0N-5wS" kind="show" id="f7i-eG-JaG"/>
+                                                <segue destination="B8D-0N-5wS" kind="show" id="oeQ-k8-eQa"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -95,7 +95,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Device Browser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA" userLabel="Device Browser">
+                    <window key="window" title="Device Browser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA" userLabel="Device Browser">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
