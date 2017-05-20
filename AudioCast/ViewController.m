@@ -44,15 +44,15 @@ NSMutableArray *_services;
     return (int) _services.count;
 }
 
-- (NSView *) tableView:(NSTableView *)tableView
-   viewForTableColumn:(NSTableColumn *)tableColumn
+- (NSView *) tableView:(NSTableView *)table
+   viewForTableColumn:(NSTableColumn *)column
                   row:(NSInteger)row {
     
-    NSTableCellView *cell = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
+    NSTableCellView *cell = [table makeViewWithIdentifier:column.identifier owner:self];
     
     ACSSDPService *service = _services[row];
     
-    if (tableColumn == [tableView.tableColumns objectAtIndex:0]) {
+    if (column == [table.tableColumns objectAtIndex:0]) {
 
         [cell.textField setStringValue:service.friendlyName];
 
@@ -61,7 +61,7 @@ NSMutableArray *_services;
             [cell.imageView setHidden:NO];
         }
         
-    } else if (tableColumn == [tableView.tableColumns objectAtIndex:1]) {
+    } else if (column == [table.tableColumns objectAtIndex:1]) {
         
         [cell.textField setStringValue:service.service.location.absoluteString];
         [cell.imageView setHidden:YES];
