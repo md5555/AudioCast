@@ -9,10 +9,7 @@
 #import "ViewController.h"
 #import <CocoaSSDP/SSDPService.h>
 #import <CocoaSSDP/SSDPServiceTypes.h>
-#import "STHTTPRequest.h"
 #import "ACSSDPService.h"
-#import "XMLDictionary.h"
-#import "DeviceUtils.h"
 #import "DeviceLoader.h"
 
 @implementation ViewController
