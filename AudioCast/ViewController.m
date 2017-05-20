@@ -84,6 +84,15 @@ NSMutableArray *_services;
 - (void) ssdpBrowser:(SSDPServiceBrowser *)browser didFindService:(SSDPService *)service {
     NSLog(@"SSDP Browser found: %@", service);
     
+    for (id object in _services) {
+        
+        ACSSDPService * item = (ACSSDPService*) object;
+        
+        if ([item.service.location isEqual:service.location]) {
+            return;
+        }
+    }
+    
     DeviceLoader * loader = [[DeviceLoader alloc] initWithService:service];
     [loader setDelegate:self];
     [loader performLoad];
@@ -91,6 +100,17 @@ NSMutableArray *_services;
 
 - (void) ssdpBrowser:(SSDPServiceBrowser *)browser didRemoveService:(SSDPService *)service {
     NSLog(@"SSDP Browser removed: %@", service);
+    
+    for (id object in _services) {
+        
+        ACSSDPService * item = (ACSSDPService*) object;
+        
+        if ([item.service.location isEqual:service.location]) {
+            [_services removeObject:object];
+            [self.table reloadData];
+            return;
+        }
+    }
 }
 
 
