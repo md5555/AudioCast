@@ -8,6 +8,8 @@
 #include <CoreAudio/CoreAudioTypes.h>
 #include <CoreFoundation/CFRunLoop.h>
 
+#include <TPCircularBuffer/TPCircularBuffer.h>
+
 #define NUM_CHANNELS 2
 #define NUM_BUFFERS 4
 #define BUFFER_SIZE 4096
@@ -44,6 +46,9 @@ class OSXAudioInput {
 				const AudioStreamPacketDescription *packet_desc);
 
 		OSXAudioInData inputData_;
+    
+        TPCircularBuffer buffer;
+    
 		bool open;
 };
 

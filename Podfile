@@ -4,4 +4,5 @@ target 'AudioCast' do
   use_frameworks!
   pod 'CocoaSSDP'
   pod 'upnpx', '1.4.0a2' 
+  pod 'TPCircularBuffer', '1.4'
 end
