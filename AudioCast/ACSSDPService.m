@@ -10,6 +10,6 @@
 
 @implementation ACSSDPService
 
-@synthesize friendlyName;
+@synthesize friendlyName, imageData;
 
 @end

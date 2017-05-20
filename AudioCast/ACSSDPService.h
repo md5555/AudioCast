@@ -12,5 +12,6 @@
 
 @property(nonatomic) SSDPService * service;
 @property(nonatomic,copy) NSString *friendlyName;
+@property(nonatomic) NSData * imageData;
 
 @end

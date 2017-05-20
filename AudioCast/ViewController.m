@@ -57,10 +57,24 @@ NSMutableArray *_services;
     ACSSDPService *service = _services[row];
     
     if (tableColumn == tableView.tableColumns.firstObject) {
+
         cellView.textField.stringValue = service.friendlyName;
+
+        if (service.imageData != nil) {
+            
+            NSLog(@"IMG: setting image to cell");
+            
+            NSImage * image = [[NSImage alloc] initWithData:(NSData *)service.imageData];
+            [cellView.imageView setImage:image];
+            cellView.imageView.hidden = NO;
+        }
+        
     } else if (tableColumn == tableView.tableColumns.lastObject) {
+        
         cellView.textField.stringValue = service.service.location.absoluteString;
+        cellView.imageView.hidden = YES;
     }
+    
     return cellView;
 }
 
@@ -68,27 +82,63 @@ NSMutableArray *_services;
 
 - (void) loadDeviceXml:(SSDPService*)baseService {
     
-    STHTTPRequest *r = [STHTTPRequest requestWithURLString:baseService.location.absoluteString];
-    
-    r.completionBlock = ^(NSDictionary *headers, NSString *body) {
+    STHTTPRequest *xmlRequest = [STHTTPRequest requestWithURLString:baseService.location.absoluteString];
+    xmlRequest.completionBlock = ^(NSDictionary *headers, NSString *body) {
         
-        NSDictionary * xmlDoc = [[XMLDictionaryParser alloc] dictionaryWithString:body];
-        
+        NSDictionary  * xmlDoc  = [[XMLDictionaryParser alloc] dictionaryWithString:body];
         ACSSDPService * service = [[ACSSDPService alloc] init];
         
         service.service = baseService;
         service.friendlyName = [[xmlDoc valueForKeyPath:@"device.friendlyName"] innerText];
         
-        [_services insertObject:service atIndex:0];
+        NSURL * url = [NSURL URLWithString:service.service.location.absoluteString];
         
-        [self.table reloadData];
+        NSMutableString * imageUrlString = [NSMutableString string];
+        
+        NSArray * array = [xmlDoc valueForKeyPath:@"device.iconList.icon"];
+
+        NSString * iconUrl = [[[array objectAtIndex:0] valueForKey:@"url"] innerText];
+        
+        NSLog(@"IMG: iconUrl: %@", iconUrl);
+
+        if (iconUrl == nil) {
+            [service setImageData:nil];
+            [_services insertObject:service atIndex:0];
+            [self.table reloadData];
+            return;
+        }
+        
+        [imageUrlString appendString:@"http://"];
+        [imageUrlString appendString:url.host];
+        [imageUrlString appendFormat:@":%@", url.port];
+        [imageUrlString appendString:iconUrl];
+        
+        NSLog(@"IMG: FullURL: %@", imageUrlString);
+        
+        STHTTPRequest *imageRequest = [STHTTPRequest requestWithURLString:imageUrlString];
+        
+        imageRequest.completionDataBlock = ^(NSDictionary *headers, NSData * data) {
+          
+            [service setImageData:data];
+            
+            NSLog(@"IMG: ImageLoadSuccess: %@", imageUrlString);
+
+            [_services insertObject:service atIndex:0];
+            [self.table reloadData];
+        };
+        
+        imageRequest.errorBlock = ^(NSError *error) {
+            // TBD
+        };
+        
+        [imageRequest startAsynchronous];
     };
     
-    r.errorBlock = ^(NSError *error) {
+    xmlRequest.errorBlock = ^(NSError *error) {
         // TBD
     };
-    
-    [r startAsynchronous];
+
+    [xmlRequest startAsynchronous];
     
 }
 
